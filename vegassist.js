@@ -41,7 +41,6 @@ var stream = T.stream('statuses/filter', { track: 'vegan' });
 
 stream.on('tweet', function(tweet) {
 	// Whenever the Twitter stream notifies us of a new Tweet with the term 'vegan', we handle it!
-	console.log(tweet);
 	inspectTweet(tweet);
 });
 
