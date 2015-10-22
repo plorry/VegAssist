@@ -16,8 +16,17 @@ var phrases = [
 ];
 
 var inspectTweet = function(tweet) {
-    if (tweet.text[0] == '@'){
-        // This is an @ mention, don't retweet
+    // There's a few conditions under which we DON'T want to retweet this:
+    var tweetWasRetweeted = function() { return tweet.retweeted === true; },
+        tweetContainsFilteredTerms = function() {
+            return (settings.FILTERED_TERMS.some( function(term) {
+                var bio = tweet.user.description ? tweet.user.description.toLowerCase() : '';
+                return (tweet.user.name.toLowerCase().indexOf(term) > -1 || tweet.user.screen_name.toLowerCase().indexOf(term) > -1 || bio.indexOf(term) > -1);
+            }));
+        },
+        tweetIsPrivateConvo = function() { return tweet.text[0] === '@'; };
+    if (tweetWasRetweeted() || tweetContainsFilteredTerms() || tweetIsPrivateConvo()) {
+        // Do NOT retweet
         return false;
     }
 
