@@ -10,6 +10,10 @@ var matches = [
     'i want to be vegan',
     'i wanna go vegan',
     'i wanna be vegan',
+    "I would like to go vegan",
+    "I want to be a vegan",
+    "I wanna become vegan",
+    "I wanna be a vegan",
 ];
 
 var falsePositives = [
