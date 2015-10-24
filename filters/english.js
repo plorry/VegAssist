@@ -15,9 +15,9 @@ var robustRegex = function(regexStr, flags) {
 }
 
 module.exports = [
-    robustRegex( "help me (be( a)?|become( a)?|go) veg(etari)?an" ),
+    robustRegex( "help me (be( a)?|become( a)?|go) #?vegan" ),
     robustRegex( "i (" + adverbsRegexSet + ")? ?(want to|wanna|would like to|should) (be( a)?|become( a)?|go) #?vegan" ),
     robustRegex( "i (" + adverbsRegexSet + ")? ?(will|do)? ?(need|want) help (going|becoming( a)?|being( a)?|staying( a)?) #?vegan" ),
-    robustRegex( "i (" + adverbsRegexSet + ")? ?(want to|wanna|would like to|should)? ?(try) (going|becoming( a)?|being( a)?) #?vegan" ),
+    robustRegex( "i (" + adverbsRegexSet + ")? ?(want to|wanna|would like to|should) (try) (going|becoming( a)?|being( a)?) #?vegan" ),
     robustRegex( "i('| a)?m (considering|thinking (about|of)|mulling over) (going|becoming( a)?|being( a)?) #?vegan" ),
 ]
