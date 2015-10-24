@@ -26,3 +26,7 @@ module.exports = {
 ## Running the tests
 
 Simply run `npm test`
+
+## Disabling retweets
+
+Retweets can be disabled for testing purposes by using the argument `--dry-run`, e.g. `node vegassist.js --dry-run`. In dry run mode, matching tweets will be logged to the console but not retweeted.
