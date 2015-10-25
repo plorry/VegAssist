@@ -41,6 +41,7 @@ var matches = [
 
 var falsePositives = [
     "I do not want to go vegan",
+    "I should be a vegan", // this phrasing more than likely isn't about going vegan long-term (e.g. I should be a vegan for Halloween)
 ];
 
 exports.matches = function(test) {
