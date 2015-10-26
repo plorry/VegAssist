@@ -37,6 +37,8 @@ var matches = [
     "i want to go #vegan",
     "i. want. to. go. vegan.",
     "i.. want  to go ... vegan",
+    "i wish i was vegan",
+    "i wish i were vegan",
 ];
 
 var falsePositives = [
