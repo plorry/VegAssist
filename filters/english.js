@@ -21,4 +21,5 @@ module.exports = [
     robustRegex( "i (" + adverbsRegexSet + ")? ?(will|do)? ?(need|want) help (going|becoming( a)?|being( a)?|staying( a)?) #?vegan" ),
     robustRegex( "i (" + adverbsRegexSet + ")? ?(want to|wanna|would like to|should) (try) (going|becoming( a)?|being( a)?) #?vegan" ),
     robustRegex( "i('| a)?m (considering|thinking (about|of)|mulling over) (going|becoming( a)?|being( a)?) #?vegan" ),
+    robustRegex( "i (" + adverbsRegexSet + ")? ?(wish) i (was|were) #?vegan" ),
 ]
