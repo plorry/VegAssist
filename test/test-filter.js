@@ -67,19 +67,34 @@ exports.falsePositives = function(test) {
     test.done();
 };
 
-exports.retweeted = function(test) {
-    var retweetedTweet = {retweeted: true, text: "", user: {description: "", name: "", screen_name: ""}};
-    test.ok(!filter.matches(retweetedTweet), "Filter should not match retweeted tweets");
+exports.retweetedByMe = function(test) {
+    var retweetedTweet = {retweeted: true, text: "I want to go vegan", user: {description: "", name: "", screen_name: ""}};
+    test.ok(!filter.matches(retweetedTweet), "Filter should not match tweets that have been retweeted by the authed user");
+    retweetedTweet.retweeted = false;
+    test.ok(filter.matches(retweetedTweet), "Filter should match tweets that haven't been retweeted by the authed user");
+    test.done();
+}
+
+exports.retweet = function(test) {
+    var retweetTweet = {retweeted: false, retweeted_status: {}, text: "I want to go vegan", user: {description: "", name: "", screen_name: ""}};
+    test.ok(!filter.matches(retweetTweet), "Filter should not match tweets that are retweets");
+    delete retweetTweet.retweeted_status;
+    test.ok(filter.matches(retweetTweet), "Filter should match tweets that aren't retweets");
     test.done();
 }
 
 exports.reply = function(test) {
     var replyTweet = {retweeted: false, text: "@someone I want to go vegan", user: {description: "", name: "", screen_name: ""}};
     test.ok(!filter.matches(replyTweet), "Filter should not match @reply tweets");
+    replyTweet.text = "I want to go vegan";
+    test.ok(filter.matches(replyTweet), "Filter should match tweets that aren't @replies");
     test.done();
 }
 
 exports.excludedTerms = function(test) {
+    var unexcludedTweet = {retweeted: false, text: "I want to go vegan", user: {description: "", name: "", screen_name: ""}};
+    test.ok(filter.matches(unexcludedTweet), "Filter should match tweets that don't have any excluded terms in their bio/name/username");
+
     var excludedBioTweet = {retweeted: false, text: "I want to go vegan", user: {description: "Something and excludeme", name: "", screen_name: ""}};
     var excludedNameTweet = {retweeted: false, text: "I want to go vegan", user: {description: "", name: "EXCLUDEME", screen_name: ""}};
     var excludedScreenNameTweet = {retweeted: false, text: "I want to go vegan", user: {description: "", name: "", screen_name: "excludeme"}};
