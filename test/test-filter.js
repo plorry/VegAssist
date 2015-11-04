@@ -40,13 +40,18 @@ var matches = [
     "i wish i was vegan",
     "i wish i were vegan",
     "i can see myself becoming a vegan someday",
-    "i could definitely picture myself going vegan"
+    "i could definitely picture myself going vegan",
+    "\"i like to quote\" but i want to go vegan and \"stuff\"",
 ];
 
 var falsePositives = [
     "I do not want to go vegan",
     "I should be a vegan", // this phrasing more than likely isn't about going vegan long-term (e.g. I should be a vegan for Halloween)
     "Don't tell me I should go vegan",
+    "\"I want to go vegan\"",
+    "\"stuff\" \"I want to go vegan\" \"stuff\"",
+    "\"stuff\" \" I want to go vegan \" \"stuff\"",
+    "\"unbalanced\"\" but i want to go vegan and \"quotes\"",
 ];
 
 exports.matches = function(test) {
