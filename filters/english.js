@@ -6,7 +6,7 @@ var adverbs = [
 var adverbsRegexSet = adverbs.join('|');
 
 var robustRegex = function(regexStr, flags) {
-    flags = flags || 'i';
+    flags = flags || 'gi';
 
     // replace all spaces with a pattern that matches any combination of whitespace and/or periods
     regexStr = regexStr.replace(/ /g, '([\\s.]+)');
