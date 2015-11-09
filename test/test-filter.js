@@ -110,3 +110,11 @@ exports.excludedTerms = function(test) {
     test.ok(!filter.matches(excludedScreenNameTweet), "Filter should not match tweets from users with excluded terms in their screen name");
     test.done();
 }
+
+exports.numMatches = function(test) {
+    test.equal(TweetFilter.getAllMatches("testtesttest", "test").length, 3, "Plain string matching matches all instances of the pattern");
+    test.equal(TweetFilter.getAllMatches("testtestTEST", "Test").length, 3, "Plain string matching is case sensitive");
+    test.equal(TweetFilter.getAllMatches("testtestTEST", /test/i).length, 1, "Regex without the global flag only matches the first match");
+    test.equal(TweetFilter.getAllMatches("testtestTEST", /test/gi).length, 3, "Regex with the global flag matches all instances of the pattern");
+    test.done();
+}
