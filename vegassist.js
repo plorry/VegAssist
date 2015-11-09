@@ -17,6 +17,10 @@ var logFile = path.join(__dirname, (isDryRun ? 'matches.dry-run' : 'matches') + 
 
 // log tweets and their matches as json, each tweet/match will be a separate line of json
 var logMatches = function(tweet, matches) {
+    // flatten match objects a bit
+    matches = matches.map(function(match){
+        return {match: match[0], index: match.index, filter: match.filter.toString(), filterList: match.filterList };
+    })
     fs.appendFile(logFile, JSON.stringify({ tweet: tweet, matches: matches }) + "\n");
 }
 

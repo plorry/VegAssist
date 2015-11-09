@@ -27,3 +27,5 @@ build/Release
 node_modules
 
 settings.js
+/matches.dry-run.json
+/matches.json
