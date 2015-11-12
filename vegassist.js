@@ -14,6 +14,11 @@ var filter = new TweetFilter('filters', settings.FILTERED_TERMS);
 var isDryRun = process.argv[2] === '--dry-run';
 // Use a different log file for dry-run
 var logFile = path.join(__dirname, (isDryRun ? 'matches.dry-run' : 'matches') + '.json');
+// Check that we can write to disk, so that we can log it upfront and safely ignore errors later
+// This allows the bot to function even if it doesn't have write access to the disk
+fs.appendFile(logFile, "", function(err) {
+    if (err) { console.warn("Unable to write to log file: " + path.relative(__dirname, logFile)); }
+})
 
 // log tweets and their matches as json, each tweet/match will be a separate line of json
 var logMatches = function(tweet, matches) {
@@ -21,7 +26,8 @@ var logMatches = function(tweet, matches) {
     matches = matches.map(function(match){
         return {match: match[0], index: match.index, filter: match.filter.toString(), filterList: match.filterList };
     })
-    fs.appendFile(logFile, JSON.stringify({ tweet: tweet, matches: matches }) + "\n");
+    // provide an empty callback to swallow errors
+    fs.appendFile(logFile, JSON.stringify({ tweet: tweet, matches: matches }) + "\n", function(){});
 }
 
 stream.on('connect', function (response) {
