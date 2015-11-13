@@ -31,6 +31,8 @@ var logMatches = function(tweet, matches) {
     fs.appendFile(logFile, JSON.stringify({ tweet: tweet, matches: matches }) + "\n", function(){});
 }
 
+console.log("Tracking terms: " + util.trackedTerms.join(", "));
+
 stream.on('connect', function (response) {
     console.log("Connecting to Twitter..." + (isDryRun ? " (dry run, will not retweet matches)" : ""))
 })
