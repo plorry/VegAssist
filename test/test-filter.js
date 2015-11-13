@@ -1,7 +1,7 @@
 var TweetFilter = require('../lib/filter.js')
 var filter = new TweetFilter('filters', ['excludeme'])
 
-var matchesEnglish = [
+var matchesEng = [
     'help me go vegan',
     'help me become vegan',
     'help me be vegan',
