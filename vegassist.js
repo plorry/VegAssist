@@ -7,10 +7,10 @@ var fs = require('fs');
 
 // Declare your own Twitter app credentials here, if duplicating
 var T = new Twit(settings.CREDS);
-// Whenever the Twitter stream notifies us of a new Tweet with the term 'vegan' (or its international equivalents), we handle it!
-var stream = T.stream('statuses/filter', { track: util.trackedTerms });
 // Load filters from all files in the filters directory
 var filter = new TweetFilter('filters', settings.FILTERED_TERMS);
+// Whenever the Twitter stream notifies us of a new Tweet with the term 'vegan' (or its international equivalents), we handle it!
+var stream = T.stream('statuses/filter', { track: util.trackedTerms });
 // Run with option '--dry-run' to disable retweeting and instead log matches to console
 var isDryRun = process.argv[2] === '--dry-run';
 // Use a different log file for dry-run
