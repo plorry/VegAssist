@@ -1,4 +1,9 @@
-var regex = require("../lib/util").regex
+var util = require("../lib/util");
+var regex = util.regex;
+var track = util.track;
+
+track("vegan");
+
 var adverbs = [
     'really', 'totally', 'probably', 'defin[ia]tely', 'absolutely', 'actually',
     'certainly', 'literally', 'legitimately', 'genuinely', 'honestly', 'truly',

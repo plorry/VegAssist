@@ -1,3 +1,8 @@
+var util = require("../lib/util");
+var track = util.track;
+
+track("vegan", "veganist");
+
 module.exports = [
     'help me veganist te worden',
     'help me vegan te worden',
