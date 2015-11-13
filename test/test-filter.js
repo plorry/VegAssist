@@ -60,6 +60,19 @@ var matchesDut = [
     "help me veganist te worden"
 ];
 
+var matchesSpa = [
+    "hi i am spanish and Quisiera Ser Vegana",
+    "quisiera hacerme vegana they tell me",
+    "i also think that quiero hacerme vegana is something else I say"
+];
+
+var matchesPor = [
+    "hey look at this, como me torno vegan",
+    "Gostava de ser vegan is what I gotta tell you",
+    "Como me posso tornar vegan",
+    "tell me gostaria de Me tornar vegan or what?"
+];
+
 var matchTest = function(matchList, test) {
     matchList.forEach(function(match) {
         test.ok(filter.matches(match), "'" + match + "' should match");    
@@ -69,7 +82,7 @@ var matchTest = function(matchList, test) {
 exports.matchesEng = function(test) {
     matchTest(matchesEng, test);
     test.done();
-};
+}
 
 exports.falsePositivesEng = function(test) {
     falsePositivesEng.forEach(function(falsePositive) {
@@ -81,12 +94,22 @@ exports.falsePositivesEng = function(test) {
         test.ok(!filter.matches(falsePositive), "'" + falsePositive + "' should not match");
     })
     test.done();
-};
+}
 
 exports.matchesDut = function(test) {
     matchTest(matchesDut, test);
     test.done();  
-};
+}
+
+exports.matchesSpa = function(test) {
+    matchTest(matchesSpa, test);
+    test.done();
+}
+
+exports.matchesPor = function(test) {
+    matchTest(matchesPor, test);
+    test.done();
+}
 
 exports.retweetedByMe = function(test) {
     var retweetedTweet = {retweeted: true, text: "I want to go vegan", user: {description: "", name: "", screen_name: ""}};
