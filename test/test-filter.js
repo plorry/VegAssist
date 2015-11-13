@@ -44,7 +44,7 @@ var matchesEnglish = [
     "\"i like to quote\" but i want to go vegan and \"stuff\"",
 ];
 
-var falsePositivesEnglish = [
+var falsePositivesEng = [
     "I do not want to go vegan",
     "I should be a vegan", // this phrasing more than likely isn't about going vegan long-term (e.g. I should be a vegan for Halloween)
     "Don't tell me I should go vegan",
