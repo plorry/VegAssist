@@ -1,7 +1,7 @@
 var TweetFilter = require('../lib/filter.js')
 var filter = new TweetFilter('filters', ['excludeme'])
 
-var matches = [
+var matchesEnglish = [
     'help me go vegan',
     'help me become vegan',
     'help me be vegan',
@@ -44,7 +44,7 @@ var matches = [
     "\"i like to quote\" but i want to go vegan and \"stuff\"",
 ];
 
-var falsePositives = [
+var falsePositivesEnglish = [
     "I do not want to go vegan",
     "I should be a vegan", // this phrasing more than likely isn't about going vegan long-term (e.g. I should be a vegan for Halloween)
     "Don't tell me I should go vegan",
@@ -54,23 +54,38 @@ var falsePositives = [
     "\"unbalanced\"\" but i want to go vegan and \"quotes\"",
 ];
 
-exports.matches = function(test) {
-    matches.forEach(function(match) {
-        test.ok(filter.matches(match), "'" + match + "' should match");
+var matchesDut = [
+    "something Dutch ik wil veganist worden something else",
+    "\"Dutch slogan\" ik wil veganist zijn",
+    "help me veganist te worden"
+];
+
+var matchTest = function(matchList, test) {
+    matchList.forEach(function(match) {
+        test.ok(filter.matches(match), "'" + match + "' should match");    
     })
+};
+
+exports.matchesEng = function(test) {
+    matchTest(matchesEng, test);
     test.done();
 };
 
-exports.falsePositives = function(test) {
-    falsePositives.forEach(function(falsePositive) {
+exports.falsePositivesEng = function(test) {
+    falsePositivesEng.forEach(function(falsePositive) {
         test.ok(!filter.matches(falsePositive), "'" + falsePositive + "' should not match");
     })
     // matching phrases with the word 'vegetarian' subbed for 'vegan' should not match
-    matches.forEach(function(match) {
+    matchesEng.forEach(function(match) {
         var falsePositive = match.replace(/vegan/g, 'vegetarian');
         test.ok(!filter.matches(falsePositive), "'" + falsePositive + "' should not match");
     })
     test.done();
+};
+
+exports.matchesDut = function(test) {
+    matchTest(matchesDut, test);
+    test.done();  
 };
 
 exports.retweetedByMe = function(test) {
