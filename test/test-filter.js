@@ -46,3 +46,29 @@ exports.numMatches = function(test) {
     test.equal(TweetFilter.getAllMatches("testtestTEST", /test/gi).length, 3, "Regex with the global flag matches all instances of the pattern");
     test.done();
 }
+
+exports.exclusionFilters = function(test) {
+	var excludeBefore = ["match", /no $/i];
+	test.equal(TweetFilter.getAllMatches("no before match after", excludeBefore).length, 1)
+	test.equal(TweetFilter.getAllMatches("before no match after", excludeBefore).length, 0)
+
+	var excludeBeforeOrAfter = ["match", /no $/i, /^ nope/i];
+	test.equal(TweetFilter.getAllMatches("no before match after nope", excludeBeforeOrAfter).length, 1)
+	test.equal(TweetFilter.getAllMatches("before no match after", excludeBeforeOrAfter).length, 0)
+	test.equal(TweetFilter.getAllMatches("before match nope after", excludeBeforeOrAfter).length, 0)
+
+	var excludeAfter = ["match", null, /^ nope/i];
+	test.equal(TweetFilter.getAllMatches("no before match after nope", excludeAfter).length, 1)
+	test.equal(TweetFilter.getAllMatches("before no match after", excludeAfter).length, 1)
+	test.equal(TweetFilter.getAllMatches("before match nope after", excludeAfter).length, 0)
+
+	var excludeFunction = ["match", function(phrase, beforePhrase, afterPhrase, startIndex, fullText) {
+		var shouldBeExcluded = beforePhrase.length !== 0 || afterPhrase.length !== 5;
+		return shouldBeExcluded;
+	}]
+	test.equal(TweetFilter.getAllMatches("match five", excludeFunction).length, 1)
+	test.equal(TweetFilter.getAllMatches("match after", excludeFunction).length, 0)
+	test.equal(TweetFilter.getAllMatches("before match five", excludeFunction).length, 0)
+
+	test.done();
+}
