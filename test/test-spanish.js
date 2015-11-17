@@ -9,6 +9,10 @@ var matches = [
 ];
 
 var falsePositives = [
+    "no quisiera ser vegana",
+    "no quiero ser vegana",
+    "no quisiera hacerme vegana",
+    "no quiero hacerme vegana",
 ];
 
 exports.matches = function(test) {
