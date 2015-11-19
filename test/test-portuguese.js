@@ -10,6 +10,11 @@ var matches = [
 ];
 
 var falsePositives = [
+	"nao quero ser vegan",
+	"não quero ser vegan",
+	"no quero ser vegan",
+	"nao gostaria de tornar-me vegan", // I would not want to become vegan
+	"de jeito nenhum gostaria de tornar-me vegan", // no way I would become vegan
 ];
 
 exports.matches = function(test) {
