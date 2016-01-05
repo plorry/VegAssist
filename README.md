@@ -19,7 +19,8 @@ module.exports = {
     consumer_secret:      '...',
     access_token:         '...',
     access_token_secret:  '...'
-  }
+  },
+  FILTERS: []
 }
 ```
 
