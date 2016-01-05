@@ -8,7 +8,9 @@ var fs = require('fs');
 // Declare your own Twitter app credentials here, if duplicating
 var T = new Twit(settings.CREDS);
 // Load filters from all files in the filters directory
-var filter = new TweetFilter('filters', settings.FILTERED_TERMS);
+var settingsFilteredTerms = settings.FILTERED_TERMS || [];
+var settingsFilters = settings.FILTERS || [];
+var filter = new TweetFilter('filters', settingsFilteredTerms, settingsFilters);
 // Whenever the Twitter stream notifies us of a new Tweet with the term 'vegan' (or its international equivalents), we handle it!
 var stream = T.stream('statuses/filter', { track: util.trackedTerms });
 // Run with option '--dry-run' to disable retweeting and instead log matches to console
@@ -20,6 +22,8 @@ var logFile = path.join(__dirname, (isDryRun ? 'matches.dry-run' : 'matches') + 
 fs.appendFile(logFile, "", function(err) {
     if (err) { console.warn("Unable to write to log file: " + path.relative(__dirname, logFile)); }
 })
+
+console.log("Loaded filters: " + Object.keys(filter.filters).join(", "));
 
 // log tweets and their matches as json, each tweet/match will be a separate line of json
 var logMatches = function(tweet, matches) {
