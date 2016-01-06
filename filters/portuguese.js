@@ -57,28 +57,29 @@ var needRegexSet = need.join('|');
 
 
 module.exports = [
+
     // wanting to go vegan
-    regex( "^(eu)? ?(" + adverbsRegexSet + ")? ?(" + wantingVerbsRegexSet + ") (" + beingRegexSet +") #?vegan(a|o)?" ),
+    excludeBefore( regex( "(eu)? ?(" + adverbsRegexSet + ")? ?(" + wantingVerbsRegexSet + ") (" + beingRegexSet +") #?vegan(a|o)?" ), negations),
 
     // thinking about going vegan
-    regex( "^(eu)? ?(" + amRegexSet + ")? ?(" + thinkingRegexSet + ") (" + aboutRegexSet + ")? (" + beingRegexSet +") #?vegan(a|o)?" ),
+    excludeBefore( regex( "(eu)? ?(" + amRegexSet + ")? ?(" + thinkingRegexSet + ") (" + aboutRegexSet + ")? (" + beingRegexSet +") #?vegan(a|o)?" ), negations),
 
     // considering turning vegan
-    regex( "^(eu)? ?(" + amRegexSet + ")? ?(" + thinkingRegexSet + ") (" + aboutRegexSet + ")? (" + adoptVerbsRegexSet +") #?vegan(a|o)?" ),
+    excludeBefore( regex( "(eu)? ?(" + amRegexSet + ")? ?(" + thinkingRegexSet + ") (" + aboutRegexSet + ")? (" + adoptVerbsRegexSet +") #?vegan(a|o)?" ), negations),
 
     // help going vegan
-    regex( "^(eu)? ?(" + wantingVerbsRegexSet + ")? ?(" + helpRegexSet + ") (a|para|pra) ("+beingRegexSet+") #?vegan(a|o)?" ),
-    regex( "^(eu)? ?(" + needRegexSet + ")? (de)? ?(" + helpRegexSet + ") (a|para|pra) ("+beingRegexSet+") #?vegan(a|o)?" ),
-    regex( "^(me)? ?(" + helpRegexSet + ")? (a|para|pra) ("+beingRegexSet+") #?vegan(a|o)?" ),
+    excludeBefore( regex( "(eu)? ?(" + wantingVerbsRegexSet + ")? ?(" + helpRegexSet + ") (a|para|pra) ("+beingRegexSet+") #?vegan(a|o)?" ), negations),
+    excludeBefore( regex( "(eu)? ?(" + needRegexSet + ")? (de)? ?(" + helpRegexSet + ") (a|para|pra) ("+beingRegexSet+") #?vegan(a|o)?" ), negations),
+    excludeBefore( regex( "(me)? ?(" + helpRegexSet + ")? (a|para|pra) ("+beingRegexSet+") #?vegan(a|o)?" ), negations),
 
     // wanting to adopt veganism
-    regex( "^(eu)? ?(" + adverbsRegexSet + ")? ?(" + wantingVerbsRegexSet + ") ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ),
+    excludeBefore( regex( "(eu)? ?(" + adverbsRegexSet + ")? ?(" + wantingVerbsRegexSet + ") ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
 
     // thinking to adopt veganism
-    regex( "^(eu)? ?(" + amRegexSet + ")? ?(" + thinkingRegexSet + ") (" + aboutRegexSet + ")? ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ),
+    excludeBefore( regex( "(eu)? ?(" + amRegexSet + ")? ?(" + thinkingRegexSet + ") (" + aboutRegexSet + ")? ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
 
     // help adopt veganism
-    regex( "^(eu)? ?(" + wantingVerbsRegexSet + ")? ?(" + helpRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ),
-    regex( "^(eu)? ?(" + needRegexSet + ")? (de)? ?(" + helpRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ),
-    regex( "^(me)? ?(" + helpRegexSet + ")? (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ),
+    excludeBefore( regex( "(eu)? ?(" + wantingVerbsRegexSet + ")? ?(" + helpRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
+    excludeBefore( regex( "(eu)? ?(" + needRegexSet + ")? (de)? ?(" + helpRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
+    excludeBefore( regex( "(me)? ?(" + helpRegexSet + ")? (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
 ];
