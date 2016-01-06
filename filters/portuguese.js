@@ -55,6 +55,17 @@ var need = [
 ]
 var needRegexSet = need.join('|');
 
+var advice = [
+    'conselho', 'um conselho', 'conselhos', 'uns conselhos'
+]
+var conselhoRegexSet = need.join('|');
+
+var give = [
+    'da', 'dá',
+]
+var giveRegexSet = need.join('|');
+
+
 
 module.exports = [
 
@@ -82,4 +93,10 @@ module.exports = [
     excludeBefore( regex( "(eu)? ?(" + wantingVerbsRegexSet + ")? ?(" + helpRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
     excludeBefore( regex( "(eu)? ?(" + needRegexSet + ")? (de)? ?(" + helpRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
     excludeBefore( regex( "(me)? ?(" + helpRegexSet + ")? (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
+
+    // need advice going vegan
+    excludeBefore( regex( "(eu)? ?(" + wantingVerbsRegexSet + ")? ?(" + conselhoRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
+    excludeBefore( regex( "(eu)? ?(" + adverbsRegexSet + ")? ?(" + wantingVerbsRegexSet + ") (" + conselhoRegexSet + ") (a|para|pra) (" + beingRegexSet +") #?vegan(a|o)?" ), negations),
+    excludeBefore( regex( "(eu)? ?(" + giveRegexSet + ") (" + conselhoRegexSet + ") (a|para|pra) ("+adoptVerbsRegexSet+") (o|ao)? ?#?vegan(ismo)?" ), negations),
+    excludeBefore( regex( "(me)? ?(" + giveRegexSet + ") (" + conselhoRegexSet + ") (a|para|pra) (" + beingRegexSet +") #?vegan(a|o)?" ), negations),
 ];

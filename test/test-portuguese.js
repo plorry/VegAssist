@@ -89,6 +89,8 @@ var matches = [
     'realmente gostaria de ser vegan',
     'realmente gostaria de ser vegano',
 
+    'quero um conselho para adotar veganismo',
+    'preciso de conselho para me tornar vegano',
 ];
 
 var falsePositives = [
