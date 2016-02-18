@@ -7,6 +7,8 @@ var fs = require('fs');
 
 // Declare your own Twitter app credentials here, if duplicating
 var T = new Twit(settings.CREDS);
+// Set a delay time constant of 2 minutes - RTs will be delayed by this amount
+var DELAYTIME = 1000 * 60 * 2;
 // Load filters from all files in the filters directory
 var settingsFilteredTerms = settings.FILTERED_TERMS || [];
 var settingsFilters = settings.FILTERS || [];
@@ -55,12 +57,12 @@ stream.on('tweet', function(tweet) {
             return;
         }
         // positive match; let's retweet!
-        T.post('statuses/retweet/:id', {id: tweet.id_str}, function(err, data, response) {
+        setTimeout(function(){T.post('statuses/retweet/:id', {id: tweet.id_str}, function(err, data, response) {
             if (err) {
                 console.log(err);
                 return false;
             }
             console.log('Retweeted: ' + tweet.id_str);
-        });
+        });}, DELAYTIME);
     }
 });
