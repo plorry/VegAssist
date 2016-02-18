@@ -57,12 +57,12 @@ stream.on('tweet', function(tweet) {
             return;
         }
         // positive match; let's retweet!
-        setTimeout(T.post('statuses/retweet/:id', {id: tweet.id_str}, function(err, data, response) {
+        setTimeout(function(){T.post('statuses/retweet/:id', {id: tweet.id_str}, function(err, data, response) {
             if (err) {
                 console.log(err);
                 return false;
             }
             console.log('Retweeted: ' + tweet.id_str);
-        }), DELAYTIME);
+        });}, DELAYTIME);
     }
 });
