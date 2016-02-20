@@ -80,10 +80,5 @@ exports.matches = function(test) {
 
 exports.falsePositives = function(test) {
     shared.testFalsePositives(test, falsePositives, filter);
-    // matching phrases with the word 'vegetarian' subbed for 'vegan' should not match
-    matches.forEach(function(match) {
-        var falsePositive = match.replace(/vegan/g, 'vegetarian');
-        test.ok(!filter.matches(falsePositive), "'" + falsePositive + "' should not match");
-    })
     test.done();
 }
