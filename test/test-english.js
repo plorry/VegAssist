@@ -43,6 +43,8 @@ var matches = [
     "i can see myself becoming a vegan someday",
     "i could definitely picture myself going vegan",
     "\"i like to quote\" but i want to go vegan and \"stuff\"",
+    "i'm planning on going vegan",
+    "i'm totally thinking about becoming a vegan",
 ];
 
 var falsePositives = [
