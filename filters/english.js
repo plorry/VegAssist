@@ -18,7 +18,7 @@ module.exports = [
     regex( "^(i think)? ?i (" + adverbsRegexSet + ")? ?(should) (go|be) #?vegan" ),
     regex( "i (" + adverbsRegexSet + ")? ?(will|do)? ?(need|want) help (going|becoming( a)?|being( a)?|staying( a)?) #?vegan" ),
     regex( "i (" + adverbsRegexSet + ")? ?(want to|wanna|would like to|should) (try) (going|becoming( a)?|being( a)?) #?vegan" ),
-    regex( "i('| a)?m (" + adverbsRegexSet + ")? (considering|thinking (about|of)|mulling over|planning on) (going|becoming( a)?|being( a)?) #?vegan" ),
+    regex( "i('| a)?m (" + adverbsRegexSet + ")? ?(considering|thinking (about|of)|mulling over|planning on) (going|becoming( a)?|being( a)?) #?vegan" ),
     regex( "i (" + adverbsRegexSet + ")? ?(wish) i (was|were) #?vegan" ),
     regex( "i (can|could) (" + adverbsRegexSet + ")? ?(see|picture|imagine)( myself)? (going|being( a)?|becoming( a)?) #?vegan")
 ]
