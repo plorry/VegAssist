@@ -2,13 +2,15 @@ var util = require("../lib/util");
 var regex = util.regex;
 var track = util.track;
 
-track("végétalien", "vegan");
+track("végétalien", "végétalienne", "vegan", "végane");
 
 module.exports = [
-    regex( "je deviens (végétalien|vegan)" ),
-    regex( "je vais (devenir|être) (végétalien|vegan)" ),
-    regex( "je veux( bien)? (devenir|être) (végétalien|vegan)" ),
-    regex( "je veux (devenir|être)( totalement)? (végétalien|vegan)" ),
-    regex( "je suis( vraiment)? motivé à (devenir|être) (végétalien|vegan)" ),
-    regex( "j'aimerais (devenir|être) (végétalien|vegan)" )
+    regex( "je deviens (végétalien|végétalienne|vegan|végane)" ),
+    regex( "je vais (devenir|être) (végétalien|végétalienne|vegan|végane)" ),
+    regex( "je veux( bien)? (devenir|être) (végétalien|végétalienne|vegan|végane)" ),
+    regex( "je veux (devenir|être)( totalement)? (végétalien|végétalienne|vegan|végane)" ),
+    regex( "je suis( vraiment)? motivé à (devenir|être) (végétalien|végétalienne|vegan|végane)" ),
+    regex( "j'aimerais (devenir|être) (végétalien|végétalienne|vegan|végane)" ),
+    regex( "j'hésite( de plus en plus)? à devenir (végétalien|végétalienne|vegan|végane)" ),
+    regex( "je crois que je vais (devenir|être) (végétalien|végétalienne|vegan|végane)" )
 ]
