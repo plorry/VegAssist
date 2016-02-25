@@ -3,8 +3,8 @@ var TweetFilter = require('../lib/filter')
 var filter = new TweetFilter(TweetFilter.getFiltersFromFiles("filters/french"))
 
 var matches = [
-    "Je deviens végétalien",
-    "Je deviens vegan",
+    "je deviens végétalien",
+    "je deviens vegan",
     "je vais devenir végétalien",
     "je vais devenir vegan",
     "je vais être végétalien",
@@ -29,10 +29,10 @@ var matches = [
     "je suis vraiment motivé à devenir vegan",
     "je suis vraiment motivé à être végétalien",
     "je suis vraiment motivé à être vegan",
-    "J'aimerais devenir végétalien",
-    "J'aimerais devenir vegan",
-    "J'aimerais être végétalien",
-    "J'aimerais être vegan"
+    "j'aimerais devenir végétalien",
+    "j'aimerais devenir vegan",
+    "j'aimerais être végétalien",
+    "j'aimerais être vegan"
 ];
 
 var falsePositives = [
