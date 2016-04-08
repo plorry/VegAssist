@@ -1,15 +1,13 @@
 var util = require("../lib/util");
 var track = util.track;
+var regex = util.regex;
 var excludeBefore = util.excludeBefore;
 
-track("vegana");
+track("vegano", "vegana");
 
-var negations = ["no", "not", "nay"]
+var negations = ["no"]
 
 module.exports = [
-  excludeBefore("quisiera ser vegana", negations),
-  excludeBefore("quiero ser vegana", negations),
-  excludeBefore("quisiera hacerme vegana", negations),
-  excludeBefore("quiero hacerme vegana", negations),
+  excludeBefore(regex( "(quisiera|quiero|debería|debe|pensando .*) (ser|hacerme|hacerse|convertirse en) ?(un|una)? vegan(a|o)" ), negations),
   // "Ya no quiero comer animales"
 ];

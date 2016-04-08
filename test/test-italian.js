@@ -1,17 +1,16 @@
 var shared = require('./lib/shared');
 var TweetFilter = require('../lib/filter')
-var filter = new TweetFilter(TweetFilter.getFiltersFromFiles("filters/spanish"))
+var filter = new TweetFilter(TweetFilter.getFiltersFromFiles("filters/italian"))
 
 var matches = [
-    "hi i am spanish and Quisiera Ser Vegana",
-    "quisiera hacerme vegana they tell me",
-    "i also think that quiero hacerme vegana is something else I say",
-    "pensando en convertirse en vegano",
+    "voglio diventare un vegano",
+    "penso che farò fatica a diventare vegana",
+    "pensando di diventare vegan",
+    "vorrei essere vegana, ma purtroppo mi piace",
 ];
 
 var falsePositives = [
-    "no quiero ser vegana",
-    "no quisiera hacerme vegana",
+    "non voglio diventare vegan",
 ];
 
 exports.matches = function(test) {
