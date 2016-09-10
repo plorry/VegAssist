@@ -29,3 +29,15 @@ node_modules
 settings.js
 /matches.dry-run.json
 /matches.json
+
+# Vim files
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
