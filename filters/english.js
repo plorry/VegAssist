@@ -29,6 +29,6 @@ module.exports = [
 	// stemming recidivism
     regex( "i('| a)?m having a (" + recidivismAdjectivesRegexSet + ") time (staying|being) #?vegan"),
     regex( "i? ?don'?t know how much longer i( can| will|'ll) (stay|be) #?vegan"),
-    regex( "(being)? ?#?vegan('| i)s (too)? ?" + recidivismAdjectivesRegexSet),
-    regex( "((it)?('| i)s)? ?(too)? ?" + recidivismAdjectivesRegexSet + " (to be|being|staying) #?vegan")
+    regex( "(being)? ?#?vegan('| i)s (too)? ?(" + recidivismAdjectivesRegexSet + ")"),
+    regex( "((it)?('| i)s)? ?(too)? ?(" + recidivismAdjectivesRegexSet + ") (to be|being|staying) #?vegan")
 ]
