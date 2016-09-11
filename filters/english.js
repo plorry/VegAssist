@@ -11,6 +11,11 @@ var adverbs = [
 ];
 var adverbsRegexSet = adverbs.join('|');
 
+var recidivismAdjectives = [
+	'hard', 'tough', 'difficult', 'rough'
+];
+var recidivismAdjectivesRegexSet = recidivismAdjectives.join('|');
+
 module.exports = [
     regex( "help me (be( a)?|become( a)?|go) #?vegan" ),
     regex( "i (" + adverbsRegexSet + ")? ?(want to|wanna|would like to) (be( a)?|become( a)?|go) #?vegan" ),
@@ -20,5 +25,10 @@ module.exports = [
     regex( "i (" + adverbsRegexSet + ")? ?(want to|wanna|would like to|should) (try) (going|becoming( a)?|being( a)?) #?vegan" ),
     regex( "i('| a)?m (" + adverbsRegexSet + ")? ?(considering|thinking (about|of)|mulling over|planning on) (going|becoming( a)?|being( a)?) #?vegan" ),
     regex( "i (" + adverbsRegexSet + ")? ?(wish) i (was|were) #?vegan" ),
-    regex( "i (can|could) (" + adverbsRegexSet + ")? ?(see|picture|imagine)( myself)? (going|being( a)?|becoming( a)?) #?vegan")
+    regex( "i (can|could) (" + adverbsRegexSet + ")? ?(see|picture|imagine)( myself)? (going|being( a)?|becoming( a)?) #?vegan"),
+	// stemming recidivism
+    regex( "i('| a)?m having a (" + recidivismAdjectivesRegexSet + ") time (staying|being) #?vegan"),
+    regex( "i? ?don'?t know how much longer i( can| will|'ll) (stay|be) #?vegan"),
+    regex( "(being)? ?#?vegan('| i)s (too)? ?(" + recidivismAdjectivesRegexSet + ")"),
+    regex( "((it)?('| i)s)? ?(too)? ?(" + recidivismAdjectivesRegexSet + ") (to be|being|staying) #?vegan")
 ]
