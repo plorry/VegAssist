@@ -8,7 +8,7 @@ VegAssist tracks usage of the term "vegan" on twitter's public stream, and proce
 1. Clone this repository
 2. Install [node.js and npm](https://nodejs.org)
 3. Run `npm install` in the directory that you cloned this repository into
-4. Create a `settings.js` file with the format below, filling in your Twitter API credentials:
+4. Create a `settings.js` file with the format below, filling in your Twitter API credentials and Twitter botname:
 5. Run `node .`
 
 #### `settings.js` format:
@@ -20,7 +20,8 @@ module.exports = {
     access_token:         '...',
     access_token_secret:  '...'
   },
-  FILTERS: []
+  FILTERS: [],
+  HANDLE: '(botname, i.e. vegassist or @vegassist)'
 }
 ```
 
