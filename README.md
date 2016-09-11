@@ -21,7 +21,7 @@ module.exports = {
     access_token_secret:  '...'
   },
   FILTERS: [],
-  HANDLE: '(botname, i.e. vegassist or @vegassist)'
+  HANDLE: 'botname'
 }
 ```
 
