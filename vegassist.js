@@ -8,13 +8,15 @@ var fs = require('fs');
 // Declare your own Twitter app credentials here, if duplicating
 var T = new Twit(settings.CREDS);
 // Set a delay time constant of 2 minutes - RTs will be delayed by this amount
-var DELAYTIME = 1000 * 60 * 2;
+//var DELAYTIME = 1000 * 60 * 2;
+var DELAYTIME = 1000;
 // Load filters from all files in the filters directory
 var settingsFilteredTerms = settings.FILTERED_TERMS || [];
 var settingsFilters = settings.FILTERS || [];
 var filter = new TweetFilter('filters', settingsFilteredTerms, settingsFilters);
 // Whenever the Twitter stream notifies us of a new Tweet with the term 'vegan' (or its international equivalents), we handle it!
 var stream = T.stream('statuses/filter', { track: util.trackedTerms });
+console.log(util.trackedTerms);
 // Run with option '--dry-run' to disable retweeting and instead log matches to console
 var isDryRun = process.argv[2] === '--dry-run';
 // Use a different log file for dry-run
