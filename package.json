@@ -4,6 +4,7 @@
   "description": "",
   "main": "vegassist.js",
   "dependencies": {
+    "pg": "^7.4.1",
     "twit": "^2.1.0"
   },
   "devDependencies": {

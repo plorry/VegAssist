@@ -4,6 +4,7 @@ var TweetFilter = require('./lib/filter');
 var util = require('./lib/util');
 var path = require('path');
 var fs = require('fs');
+var pg = require('pg');
 
 // Declare your own Twitter app credentials here, if duplicating
 var T = new Twit(settings.CREDS);
@@ -19,6 +20,13 @@ if (handle.length > 0){
 		handle = '@' + handle;
 	util.track(handle);
 }
+
+const client = new pg.Client({
+    user: settings.DATABASE['user'],
+    password: settings.DATABASE['password'],
+    database: settings.DATABASE['db_name']
+});
+client.connect();
 
 var filter = new TweetFilter('filters', settingsFilteredTerms, settingsFilters, handle);
 // Whenever the Twitter stream notifies us of a new Tweet with the term 'vegan' (or its international equivalents), we handle it!
@@ -38,11 +46,15 @@ console.log("Loaded filters: " + Object.keys(filter.filters).join(", "));
 // log tweets and their matches as json, each tweet/match will be a separate line of json
 var logMatches = function(tweet, matches) {
     // flatten match objects a bit
-    matches = matches.map(function(match){
-        return {match: match[0], index: match.index, filter: match.filter.toString(), filterList: match.filterList };
-    })
+    // matches = matches.map(function(match){
+    //    return {match: match[0], index: match.index, filter: match.filter.toString(), filterList: match.filterList };
+    //})
     // provide an empty callback to swallow errors
-    fs.appendFile(logFile, JSON.stringify({ tweet: tweet, matches: matches }) + "\n", function(){});
+    // fs.appendFile(logFile, JSON.stringify({ tweet: tweet, matches: matches }) + "\n", function(){});
+
+    client.query('INSERT INTO retweet(tweet_id, text, time, username, user_follower_count) VALUES($1, $2, $3, $4, $5)', [tweet.id, tweet.text, tweet.created_at, tweet.user.followers_count], function(){
+        client.query('COMMIT');
+    });
 }
 
 console.log("Tracking terms: " + util.trackedTerms.join(", "));
