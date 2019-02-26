@@ -7,7 +7,7 @@ track("vegan");
 var adverbs = [
     'really', 'totally', 'probably', 'defin[ia]tely', 'absolutely', 'actually',
     'certainly', 'literally', 'legitimately', 'genuinely', 'honestly', 'truly',
-    'undoubtedly', 'unquestionably'
+    'undoubtedly', 'unquestionably', 'low-key', 'lowkey', 'low key'
 ];
 var adverbsRegexSet = adverbs.join('|');
 
@@ -28,7 +28,5 @@ module.exports = [
     regex( "i (can|could) (" + adverbsRegexSet + ")? ?(see|picture|imagine)( myself)? (going|being( a)?|becoming( a)?) #?vegan"),
 	// stemming recidivism
     regex( "i('| a)?m having a (" + recidivismAdjectivesRegexSet + ") time (staying|being) #?vegan"),
-    regex( "i? ?don'?t know how much longer i( can| will|'ll) (stay|be) #?vegan"),
-    regex( "(being|staying|going) ?#?vegan('| i)s (too)? ?(" + recidivismAdjectivesRegexSet + ")"),
-    regex( "it(('| i)s)? ?(too)? ?(" + recidivismAdjectivesRegexSet + ") (to be( a)?|being( a)?|staying( a)?|going) #?vegan")
+    regex( "i? ?don'?t know how much longer i( can| will|'ll) (stay|be) #?vegan")
 ]
